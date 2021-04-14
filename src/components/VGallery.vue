@@ -125,11 +125,11 @@ export default defineComponent({
     }
 
     const onMask = (e) => {
-      const element = e.target || e.srcElement
+      // const element = e.target || e.srcElement
 
-      if (!isScale.value && element.localName !== 'img') {
-        ctx.emit('update:show', false)
-      }
+      // if (!isScale.value && element.localName !== 'img') {
+      //   ctx.emit('update:show', false)
+      // }
     }
 
     return {
