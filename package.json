@@ -1,6 +1,22 @@
 {
   "name": "v3-gallery",
-  "version": "0.0.0",
+  "version": "0.0.3",
+  "homepage": "https://github.com/inhal/v3-gallery",
+  "author": {
+    "name": "inhal",
+    "email": "inhons@gmail.com"
+  },
+  "private": false,
+  "keywords": [
+    "vue3",
+    "gallery",
+    "v3-gallery"
+  ],
+  "license": "MIT",
+  "files": [
+    "src/components/*"
+  ],
+  "main": "src/components/index.ts",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
