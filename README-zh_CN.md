@@ -9,15 +9,15 @@
 </p>
 
 <div align="center">
-V3 Gallery is a Vue 3 gallery component based on TypeScript & Composition API.
+一个 Vue 3 图库，使用 TypeScript 和 Composition API 编写。
 </div>
 
 <br>
 <br>
 
-English | [简体中文](./README-zh_CN.md)
+[English](./README.md) | 简体中文
 
-## Install
+## 安装
 
 ```
 npm install v3-gallery
@@ -31,7 +31,7 @@ pnpm add v3-gallery
 yarn add v3-gallery
 ```
 
-## Usage
+## 使用
 
 ```
 <template>
@@ -63,6 +63,6 @@ export default defineComponent({
 </script>
 ```
 
-## License
+## 许可证
 
 [MIT](https://github.com/inhal/v3-gallery/blob/main/LICENSE)
