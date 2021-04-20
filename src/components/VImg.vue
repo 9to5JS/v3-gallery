@@ -1,34 +1,36 @@
 <template>
-  <div class="v-img" :class="[isScale ? 'v-is-scale' : '']" @click="onWrapper">
+  <div class="vg-img-wrapper">
     <img
       :src="src"
-      :class="[canScale && !isScale ? 'v-can-scale' : '']"
+      class="vg-img"
+      :class="{
+        'vg-zoom-in': canScale,
+        'vg-zoom-out': isScale
+      }"
+      style="max-width: 100%; max-height: 100%"
       loading="lazy"
       ref="imgRef"
+      @click="onImg"
     />
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from 'vue'
+<script lang="ts">
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   props: {
     src: {
       type: String,
-      default: true
+      default: ''
     }
   },
 
-  emits: ['change'],
-
-  setup(props, ctx) {
+  setup(props) {
     const canScale = ref(false)
     const isScale = ref(false)
-    const imgRef = ref()
+    const imgRef = ref<HTMLImageElement>()
     const windowHeight = window.innerHeight
-
-    const realHeight = ref(0)
 
     const init = () => {
       if (props.src) {
@@ -37,7 +39,6 @@ export default defineComponent({
         img.onload = () => {
           if (img.height > windowHeight) {
             canScale.value = true
-            realHeight.value = img.height
           }
         }
       }
@@ -46,68 +47,47 @@ export default defineComponent({
 
     const onImg = () => {
       if (!canScale.value) return
+      if (!imgRef.value) return
 
       if (!isScale.value) {
-        imgRef.value.style.height = realHeight.value + 'px'
+        imgRef.value.style.maxWidth = ''
+        imgRef.value.style.maxHeight = ''
         isScale.value = true
-      }
-    }
-
-    const onWrapper = (e) => {
-      if (!canScale.value) return
-
-      const element = e.target || e.srcElement
-      if (!isScale.value && element.localName === 'img') {
-        imgRef.value.style.height = realHeight.value + 'px'
-        isScale.value = true
-        ctx.emit('change', isScale.value)
-        return
-      }
-      if (isScale.value) {
-        imgRef.value.style.height = 'inherit'
+      } else {
+        imgRef.value.style.maxWidth = '100%'
+        imgRef.value.style.maxHeight = '100%'
         isScale.value = false
-        ctx.emit('change', isScale.value)
-        return
       }
     }
 
     return {
-      imgRef,
-      onImg,
       canScale,
       isScale,
-      onWrapper
+      imgRef,
+      onImg
     }
-  },
+  }
 })
 </script>
 
 <style>
-.v-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100000;
-  background: #000;
-}
-.v-img {
+.vg-img-wrapper {
   width: 100%;
-  max-height: 100vh;
-  overflow: auto;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  overflow-y: auto;
 }
-.v-img img {
+.vg-img {
   user-select: none;
-  height: inherit;
 }
 
-.v-can-scale {
+.vg-zoom-in {
   cursor: zoom-in;
 }
-.v-is-scale {
+.vg-zoom-out {
   cursor: zoom-out;
 }
 </style>

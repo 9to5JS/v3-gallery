@@ -1,34 +1,19 @@
 {
   "name": "v3-gallery",
-  "version": "0.0.2",
-  "homepage": "https://github.com/inhal/v3-gallery",
-  "author": {
-    "name": "inhal",
-    "email": "inhons@gmail.com"
-  },
-  "private": false,
-  "keywords": [
-    "vue3",
-    "gallery",
-    "v3-gallery"
-  ],
-  "license": "MIT",
+  "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
-  "files": [
-    "src/index.js",
-    "src/components/*.vue"
-  ],
-  "main": "src/index.js",
   "dependencies": {
     "vue": "^3.0.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.1",
     "@vue/compiler-sfc": "^3.0.11",
-    "vite": "^2.1.5"
+    "typescript": "^4.2.4",
+    "vite": "^2.1.5",
+    "vue-tsc": "^0.0.24"
   }
 }

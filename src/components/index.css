@@ -1,0 +1,63 @@
+.vg-mask {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 1);
+  z-index: 99999;
+}
+.vg-mask:hover .vg-left {
+  display: inline-block;
+}
+
+.vg-mask:hover .vg-right {
+  display: inline-block;
+}
+
+.vg-mask:hover .vg-close {
+  display: inline-block;
+}
+
+.vg-left,
+.vg-right,
+.vg-close {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 100ms;
+  display: none;
+  padding: 4px;
+  z-index: 1;
+}
+.vg-left:hover,
+.vg-right:hover,
+.vg-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.vg-left {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 15px;
+}
+.vg-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+}
+
+.vg-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.vg-stage {
+  width: inherit;
+  height: inherit;
+}
