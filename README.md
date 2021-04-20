@@ -55,7 +55,7 @@ export default defineComponent({
     const images = [
       "https://xxxxx.jpg",
       "https://xxxxxxxxx.jpg"
-    ];
+    ]
 
     return { show, images }
   }
