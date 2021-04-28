@@ -36,7 +36,7 @@ yarn add v3-gallery
 ```
 <template>
   <button @click="show = true">Open</button>
-  <VGaller v-model="show" :images="images" />
+  <VGaller v-model="show" :images="images" :index="index" />
 </template>
 
 <script lang="ts">
@@ -52,12 +52,13 @@ export default defineComponent({
 
   setup() {
     const show = ref(false)
+    const index = ref(0) // index, 0 ~ (images.length - 1)
     const images = [
       "https://xxxxx.jpg",
       "https://xxxxxxxxx.jpg"
     ]
 
-    return { show, images }
+    return { show, images, index }
   }
 })
 </script>
