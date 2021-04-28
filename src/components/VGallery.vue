@@ -86,6 +86,11 @@ export default defineComponent({
     modelValue: {
       type: Boolean,
       default: false
+    },
+
+    index: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -93,11 +98,14 @@ export default defineComponent({
 
   setup(props) {
     const current = ref(0)
+    current.value = props.index
     let len = 0
 
     watch(() => props.modelValue, () => {
       len = props.images.length
     })
+
+    watch(() => props.index, (val) => current.value = val)
 
     const onLeft = () => {
       if (current.value >= 0) {
