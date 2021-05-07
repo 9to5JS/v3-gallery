@@ -103,9 +103,8 @@ export default defineComponent({
 
     watch(() => props.modelValue, () => {
       len = props.images.length
+      current.value = props.index
     })
-
-    watch(() => props.index, (val) => current.value = val)
 
     const onLeft = () => {
       if (current.value >= 0) {
